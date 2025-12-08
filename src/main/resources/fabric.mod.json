@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "trainerattributeslib",
+	"version": "${version}",
+	"name": "TrainerAttributesLib",
+	"description": "",
+	"authors": [],
+	"contact": {},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/trainerattributeslib/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.the_number_two.trainerattributeslib.TrainerAttributesLib"
+		]
+	},
+	"mixins": [
+		"trainerattributeslib.mixins.json",
+		{
+			"config": "trainerattributeslib.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"fabric-language-kotlin": ">=${kotlin_loader_version}",
+		"fabric": "*",
+		"minecraft": "${minecraft_version}"
+	}
+}
