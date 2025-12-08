@@ -15,11 +15,7 @@
 		]
 	},
 	"mixins": [
-		"trainerattributeslib.mixins.json",
-		{
-			"config": "trainerattributeslib.client.mixins.json",
-			"environment": "client"
-		}
+		"trainerattributeslib.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${loader_version}",

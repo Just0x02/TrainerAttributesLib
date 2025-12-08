@@ -29,7 +29,6 @@ loom {
     mods {
         register("trainerattributeslib") {
             sourceSet("main")
-            sourceSet("client")
         }
     }
 }
