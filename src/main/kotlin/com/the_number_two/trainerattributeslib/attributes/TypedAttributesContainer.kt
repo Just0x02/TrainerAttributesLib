@@ -36,7 +36,7 @@ class TypedAttributesContainer(val attributeId: String, val fallbackValue: Doubl
                 Registries.ATTRIBUTE,
                 TrainerAttributesLib.getIdentifier(this.getTypedIdentifierString(it)),
                 ClampedEntityAttribute(
-                    "attribute.name.TrainerAttributesLib.${this.getTypedIdentifierString(it)}",
+                    "attribute.name.trainerattributeslib.${this.getTypedIdentifierString(it)}",
                     this.fallbackValue,
                     this.minValue,
                     this.maxValue

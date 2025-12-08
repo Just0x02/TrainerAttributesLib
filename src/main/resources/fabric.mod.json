@@ -10,12 +10,19 @@
 	"icon": "assets/trainerattributeslib/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"client": [
+			"com.the_number_two.trainerattributeslib.client.TrainerAttributesLibClient"
+		],
 		"main": [
 			"com.the_number_two.trainerattributeslib.TrainerAttributesLib"
 		]
 	},
 	"mixins": [
-		"trainerattributeslib.mixins.json"
+		"trainerattributeslib.mixins.json",
+		{
+			"config": "trainerattributeslib.client.mixins.json",
+			"environment": "client"
+		}
 	],
 	"depends": {
 		"fabricloader": ">=${loader_version}",

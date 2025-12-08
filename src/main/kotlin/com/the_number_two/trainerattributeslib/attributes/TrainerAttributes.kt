@@ -20,7 +20,7 @@ object TrainerAttributes {
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("hidden_ability_chance_boost"),
         ClampedEntityAttribute(
-            "attribute.name.TrainerAttributesLib.hidden_ability_chance_boost",
+            "attribute.name.trainerattributeslib.hidden_ability_chance_boost",
             0.0,
             0.0,
             1.0
@@ -31,7 +31,7 @@ object TrainerAttributes {
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("shiny_chance_boost"),
         ClampedEntityAttribute(
-            "attribute.name.TrainerAttributesLib.shiny_chance_boost",
+            "attribute.name.trainerattributeslib.shiny_chance_boost",
             0.0,
             0.0,
             100.0
@@ -42,7 +42,7 @@ object TrainerAttributes {
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("crit_catch_chance_boost"),
         ClampedEntityAttribute(
-            "attribute.name.TrainerAttributesLib.crit_catch_chance_boost",
+            "attribute.name.trainerattributeslib.crit_catch_chance_boost",
             0.0,
             0.0,
             1.0
@@ -53,7 +53,7 @@ object TrainerAttributes {
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("catch_chance_boost"),
         ClampedEntityAttribute(
-            "attribute.name.TrainerAttributesLib.catch_chance_boost",
+            "attribute.name.trainerattributeslib.catch_chance_boost",
             0.0,
             0.0,
             1.0
