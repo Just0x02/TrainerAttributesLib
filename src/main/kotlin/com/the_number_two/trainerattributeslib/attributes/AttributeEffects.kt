@@ -3,11 +3,37 @@ package com.the_number_two.trainerattributeslib.attributes
 
 import com.cobblemon.mod.common.api.Priority
 import com.cobblemon.mod.common.api.events.CobblemonEvents
+import com.cobblemon.mod.common.util.nextBetween
 import net.minecraft.entity.player.PlayerEntity
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 object AttributeEffects {
     fun applyEffects() {
+        CobblemonEvents.BAIT_CONSUMED.subscribe { event ->
+            if (event.rod.holder !is PlayerEntity) return@subscribe
+            if (Random.nextBetween(0, 2) == 1) event.cancel()
+        }
+
+        CobblemonEvents.POKEMON_CAPTURED.subscribe { event ->
+            val player = event.pokemon.getOwnerPlayer() ?: return@subscribe
+
+            val bonusIVSModified: Double = AttributeUtils.getAttributeValue(
+                event.pokemon,
+                player,
+                TrainerAttributes.BONUS_IVS_ATTRIBUTE,
+                TrainerAttributes.TYPED_BONUS_IVS_ATTRIBUTE,
+                0.0
+            )
+
+            println("BONUS IVS: ${bonusIVSModified}")
+
+            if (bonusIVSModified.toInt() != 0)
+                event.pokemon.ivs.forEach { entry ->
+                    event.pokemon.ivs[entry.key] = entry.value + bonusIVSModified.toInt()
+                }
+        }
+
         CobblemonEvents.POKEMON_CATCH_RATE.subscribe(Priority.LOW, { event ->
             if (event.thrower !is PlayerEntity) return@subscribe
             val catchRateModified: Double = AttributeUtils.getAttributeValue(

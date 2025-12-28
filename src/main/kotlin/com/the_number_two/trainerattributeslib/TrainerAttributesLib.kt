@@ -1,6 +1,7 @@
 package com.the_number_two.trainerattributeslib
 
 import com.the_number_two.trainerattributeslib.attributes.TrainerAttributes
+import com.the_number_two.trainerattributeslib.items.ModItems
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
 
@@ -13,5 +14,6 @@ class TrainerAttributesLib : ModInitializer {
 
     override fun onInitialize() {
         TrainerAttributes.register()
+        ModItems.register()
     }
 }

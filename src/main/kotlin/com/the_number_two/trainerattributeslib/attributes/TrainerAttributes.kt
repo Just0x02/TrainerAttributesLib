@@ -16,6 +16,17 @@ import net.minecraft.util.Identifier
 import java.util.function.BiConsumer
 
 object TrainerAttributes {
+    val BONUS_IVS_ATTRIBUTE: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("bonus_ivs"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.bonus_ivs",
+            0.0,
+            -31.0,
+            31.0
+        )
+    )
+
     val HIDDEN_ABILITY_CHANCE_BOOST_ATTRIBUTE: EntityAttribute = Registry.register(
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("hidden_ability_chance_boost"),
@@ -74,7 +85,7 @@ object TrainerAttributes {
     val TYPED_POKEMON_EXPERIENCE_GAINED_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(POKEMON_EXPERIENCE_GAINED_ATTRIBUTE).register()
     val TYPED_CATCH_CHANCE_BOOST_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(CATCH_CHANCE_BOOST_ATTRIBUTE).register()
     val TYPED_SHINY_CHANCE_BOOST_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(SHINY_CHANCE_BOOST_ATTRIBUTE).register()
-
+    val TYPED_BONUS_IVS_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(BONUS_IVS_ATTRIBUTE).register()
 
     fun applyOnto(item: ItemStack, slot: AttributeModifierSlot, attr: EntityAttribute, n: Double, operation: EntityAttributeModifier.Operation) {
         var modifiersComponent: AttributeModifiersComponent? = item.get(DataComponentTypes.ATTRIBUTE_MODIFIERS)
