@@ -26,11 +26,16 @@ object AttributeEffects {
                 0.0
             )
 
-            println("BONUS IVS: ${bonusIVSModified}")
 
             if (bonusIVSModified.toInt() != 0)
                 event.pokemon.ivs.forEach { entry ->
-                    event.pokemon.ivs[entry.key] = entry.value + bonusIVSModified.toInt()
+                    val specificStatIVBonus: Double = AttributeUtils.getAttributeValue(
+                        player,
+                        TrainerAttributes.STAT_BONUS_IVS_ATTRIBUTE.getAttributeOfStat(entry.key),
+                        0.0
+                    )
+
+                    event.pokemon.ivs[entry.key] = entry.value + bonusIVSModified.toInt() + specificStatIVBonus.toInt()
                 }
         }
 

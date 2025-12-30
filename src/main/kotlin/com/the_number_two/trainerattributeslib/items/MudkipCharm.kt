@@ -1,5 +1,6 @@
 package com.the_number_two.trainerattributeslib.items
 
+import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.the_number_two.trainerattributeslib.TrainerAttributesLib
 import com.the_number_two.trainerattributeslib.attributes.TrainerAttributes
@@ -17,6 +18,46 @@ class MudkipCharm() : AccessoryItem(
     Item.Settings().component(
         DataComponentTypes.ATTRIBUTE_MODIFIERS as ComponentType<AttributeModifiersComponent>,
         AttributeModifiersComponent.builder()
+            .add(
+                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TIER_THREE_SPAWN_CHANCE_BOOST),
+                EntityAttributeModifier(
+                    TrainerAttributesLib.getIdentifier("ultra_rare_bucket_chance_boost"),
+                    5.50,
+                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                ),
+                AttributeModifierSlot.ANY
+            )
+            .add(
+                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TYPED_SPAWN_CHANCE_ATTRIBUTE.getAttributeOfType(
+                    ElementalTypes.FIRE
+                )),
+                EntityAttributeModifier(
+                    TrainerAttributes.TYPED_SPAWN_CHANCE_ATTRIBUTE.getIdentifierOfTypedAttribute(ElementalTypes.FIRE),
+                    5.50,
+                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                ),
+                AttributeModifierSlot.ANY
+            )
+            .add(
+                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TYPED_BONUS_IVS_ATTRIBUTE.getAttributeOfType(
+                    ElementalTypes.WATER
+                )),
+                EntityAttributeModifier(
+                    TrainerAttributes.TYPED_BONUS_IVS_ATTRIBUTE.getIdentifierOfTypedAttribute(ElementalTypes.WATER),
+                    5.0,
+                    EntityAttributeModifier.Operation.ADD_VALUE
+                ),
+                AttributeModifierSlot.ANY
+            )
+            .add(
+                Registries.ATTRIBUTE.getEntry(TrainerAttributes.STAT_BONUS_IVS_ATTRIBUTE.getAttributeOfStat(Stats.HP)),
+                EntityAttributeModifier(
+                    TrainerAttributes.STAT_BONUS_IVS_ATTRIBUTE.getIdentifierOfStatAttribute(Stats.HP),
+                    5.0,
+                    EntityAttributeModifier.Operation.ADD_VALUE
+                ),
+                AttributeModifierSlot.ANY
+            )
             .add(
                 Registries.ATTRIBUTE.getEntry(TrainerAttributes.BONUS_IVS_ATTRIBUTE),
                 EntityAttributeModifier(

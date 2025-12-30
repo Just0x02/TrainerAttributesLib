@@ -82,10 +82,62 @@ object TrainerAttributes {
         )
     )
 
+    val SPAWN_CHANCE_ATTRIBUTE: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("pokemon_spawn_chance"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.pokemon_spawn_chance",
+            0.0,
+            0.0,
+            100.0
+        )
+    )
+
+    val TIER_ONE_SPAWN_CHANCE_BOOST: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("uncommon_bucket_chance_boost"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.uncommon_bucket_chance_boost",
+            0.0,
+            0.0,
+            100.0
+        )
+    )
+
+    val TIER_TWO_SPAWN_CHANCE_BOOST: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("rare_bucket_chance_boost"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.rare_bucket_chance_boost",
+            0.0,
+            0.0,
+            100.0
+        )
+    )
+
+    val TIER_THREE_SPAWN_CHANCE_BOOST: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("ultra_rare_bucket_chance_boost"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.ultra_rare_bucket_chance_boost",
+            0.0,
+            0.0,
+            100.0
+        )
+    )
+
+    val TIERED_SPAWN_BUCKETS = mutableMapOf<String, EntityAttribute>(
+        "uncommon"   to TIER_ONE_SPAWN_CHANCE_BOOST,
+        "rare"       to TIER_TWO_SPAWN_CHANCE_BOOST,
+        "ultra-rare" to TIER_THREE_SPAWN_CHANCE_BOOST
+    )
+
+    val TYPED_SPAWN_CHANCE_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(SPAWN_CHANCE_ATTRIBUTE).register()
     val TYPED_POKEMON_EXPERIENCE_GAINED_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(POKEMON_EXPERIENCE_GAINED_ATTRIBUTE).register()
     val TYPED_CATCH_CHANCE_BOOST_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(CATCH_CHANCE_BOOST_ATTRIBUTE).register()
     val TYPED_SHINY_CHANCE_BOOST_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(SHINY_CHANCE_BOOST_ATTRIBUTE).register()
     val TYPED_BONUS_IVS_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(BONUS_IVS_ATTRIBUTE).register()
+    val STAT_BONUS_IVS_ATTRIBUTE: StatAttributesContainer = StatAttributesContainer.of(BONUS_IVS_ATTRIBUTE).register()
 
     fun applyOnto(item: ItemStack, slot: AttributeModifierSlot, attr: EntityAttribute, n: Double, operation: EntityAttributeModifier.Operation) {
         var modifiersComponent: AttributeModifiersComponent? = item.get(DataComponentTypes.ATTRIBUTE_MODIFIERS)
