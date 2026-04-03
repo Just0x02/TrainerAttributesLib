@@ -13,16 +13,14 @@ import net.minecraft.server.network.ServerPlayerEntity
 // say that 10 times fast jeez
 class TypedBucketMultiplyingInfluence : AbstractWeightInfluenceBooster() {
     override fun boostWeight(detail: PokemonSpawnDetail, player: ServerPlayerEntity, weight: Float): Float {
-        val weightBoostMultiplier: Double = AttributeUtils.getAttributeValue(
+        val boostedWeight: Double = AttributeUtils.getAttributeValue(
             detail.pokemon.create(),
             player,
             TrainerAttributes.SPAWN_CHANCE_ATTRIBUTE,
             TrainerAttributes.TYPED_SPAWN_CHANCE_ATTRIBUTE,
-            0.01
-        ) * 100.0
+            weight.toDouble()
+        )
 
-//        println("WEIGHT BOOST MULT: ${weightBoostMultiplier} (${weight * weightBoostMultiplier}) FOR ${detail.pokemon.species}")
-
-        return (weight * weightBoostMultiplier).toFloat()
+        return (boostedWeight).toFloat()
     }
 }

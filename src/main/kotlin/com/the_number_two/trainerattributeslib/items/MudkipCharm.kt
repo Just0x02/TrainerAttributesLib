@@ -4,6 +4,9 @@ import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.api.types.ElementalTypes
 import com.the_number_two.trainerattributeslib.TrainerAttributesLib
 import com.the_number_two.trainerattributeslib.attributes.TrainerAttributes
+import com.the_number_two.trainerattributeslib.attributes.util.AttributeBuilderHelper.addAttribute
+import com.the_number_two.trainerattributeslib.attributes.util.AttributeBuilderHelper.addStatAttribute
+import com.the_number_two.trainerattributeslib.attributes.util.AttributeBuilderHelper.addTypedAttribute
 import io.wispforest.accessories.api.AccessoryItem
 import net.minecraft.component.ComponentType
 import net.minecraft.component.DataComponentTypes
@@ -14,80 +17,15 @@ import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
 
-class MudkipCharm() : AccessoryItem(
+class MudkipCharm : AccessoryItem(
     Item.Settings().component(
         DataComponentTypes.ATTRIBUTE_MODIFIERS as ComponentType<AttributeModifiersComponent>,
         AttributeModifiersComponent.builder()
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TIER_THREE_SPAWN_CHANCE_BOOST),
-                EntityAttributeModifier(
-                    TrainerAttributesLib.getIdentifier("ultra_rare_bucket_chance_boost"),
-                    5.50,
-                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TYPED_SPAWN_CHANCE_ATTRIBUTE.getAttributeOfType(
-                    ElementalTypes.FIRE
-                )),
-                EntityAttributeModifier(
-                    TrainerAttributes.TYPED_SPAWN_CHANCE_ATTRIBUTE.getIdentifierOfTypedAttribute(ElementalTypes.FIRE),
-                    5.50,
-                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.TYPED_BONUS_IVS_ATTRIBUTE.getAttributeOfType(
-                    ElementalTypes.WATER
-                )),
-                EntityAttributeModifier(
-                    TrainerAttributes.TYPED_BONUS_IVS_ATTRIBUTE.getIdentifierOfTypedAttribute(ElementalTypes.WATER),
-                    5.0,
-                    EntityAttributeModifier.Operation.ADD_VALUE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.STAT_BONUS_IVS_ATTRIBUTE.getAttributeOfStat(Stats.HP)),
-                EntityAttributeModifier(
-                    TrainerAttributes.STAT_BONUS_IVS_ATTRIBUTE.getIdentifierOfStatAttribute(Stats.HP),
-                    5.0,
-                    EntityAttributeModifier.Operation.ADD_VALUE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.BONUS_IVS_ATTRIBUTE),
-                EntityAttributeModifier(
-                    TrainerAttributesLib.getIdentifier("bonus_ivs"),
-                    5.0,
-                    EntityAttributeModifier.Operation.ADD_VALUE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(TrainerAttributes.CATCH_CHANCE_BOOST_ATTRIBUTE),
-                EntityAttributeModifier(
-                    TrainerAttributesLib.getIdentifier("catch_chance_boost"),
-                    0.05,
-                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ),
-                AttributeModifierSlot.ANY
-            )
-            .add(
-                Registries.ATTRIBUTE.getEntry(
-                    TrainerAttributes.TYPED_CATCH_CHANCE_BOOST_ATTRIBUTE.getAttributeOfType(ElementalTypes.WATER)
-                ),
-                EntityAttributeModifier(
-                    TrainerAttributes.TYPED_CATCH_CHANCE_BOOST_ATTRIBUTE.getIdentifierOfTypedAttribute(ElementalTypes.WATER),
-                    0.10,
-                    EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
-                ),
-                AttributeModifierSlot.ANY
+            .addAttribute(
+                TrainerAttributes.HIDDEN_ABILITY_CHANCE_BOOST_ATTRIBUTE,
+                0.25,
+                EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
             )
             .build()
     )
-) {
-}
+)

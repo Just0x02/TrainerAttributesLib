@@ -15,5 +15,5 @@ abstract class AbstractWeightInfluenceBooster : SpawningInfluence {
         return super.affectWeight(detail, ctx, boostWeight(detail, player, weight))
     }
 
-    abstract fun boostWeight(detail: PokemonSpawnDetail, player: ServerPlayerEntity, weight: Float): Float
+    open fun boostWeight(detail: PokemonSpawnDetail, player: ServerPlayerEntity, weight: Float): Float = weight
 }

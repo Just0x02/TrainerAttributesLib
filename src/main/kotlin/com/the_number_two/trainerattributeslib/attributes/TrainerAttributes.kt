@@ -93,6 +93,17 @@ object TrainerAttributes {
         )
     )
 
+    val TIER_ZERO_SPAWN_CHANCE_BOOST: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("common_bucket_chance_boost"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.common_bucket_chance_boost",
+            0.0,
+            0.0,
+            100.0
+        ).setCategory(EntityAttribute.Category.NEGATIVE)
+    )
+
     val TIER_ONE_SPAWN_CHANCE_BOOST: EntityAttribute = Registry.register(
         Registries.ATTRIBUTE,
         TrainerAttributesLib.getIdentifier("uncommon_bucket_chance_boost"),
@@ -127,11 +138,38 @@ object TrainerAttributes {
     )
 
     val TIERED_SPAWN_BUCKETS = mutableMapOf<String, EntityAttribute>(
+        "common"     to TIER_ZERO_SPAWN_CHANCE_BOOST,
         "uncommon"   to TIER_ONE_SPAWN_CHANCE_BOOST,
         "rare"       to TIER_TWO_SPAWN_CHANCE_BOOST,
         "ultra-rare" to TIER_THREE_SPAWN_CHANCE_BOOST
     )
 
+    val EXTRA_POKEMON_LOOT_ROLLS: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("extra_pokemon_loot_rolls"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.extra_pokemon_loot_rolls",
+            0.0,
+            -100.0,
+            100.0
+        )
+    )
+
+    val POKEMON_DROP_CHANCE_BOOST: EntityAttribute = Registry.register(
+        Registries.ATTRIBUTE,
+        TrainerAttributesLib.getIdentifier("pokemon_drop_chance_boost"),
+        ClampedEntityAttribute(
+            "attribute.name.trainerattributeslib.pokemon_drop_chance_boost",
+            0.0,
+            -1.0,
+            1.0
+        )
+    )
+
+    val TYPED_HIDDEN_ABILITY_CHANCE_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(HIDDEN_ABILITY_CHANCE_BOOST_ATTRIBUTE).register()
+    val TYPED_CRIT_CATCH_CHANCE_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(CRIT_CATCH_CHANCE_BOOST_ATTRIBUTE).register()
+    val TYPED_POKEMON_DROP_CHANCE_BOOST: TypedAttributesContainer = TypedAttributesContainer.of(POKEMON_DROP_CHANCE_BOOST).register()
+    val TYPED_EXTRA_POKEMON_LOOT_ROLLS: TypedAttributesContainer = TypedAttributesContainer.of(EXTRA_POKEMON_LOOT_ROLLS).register()
     val TYPED_SPAWN_CHANCE_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(SPAWN_CHANCE_ATTRIBUTE).register()
     val TYPED_POKEMON_EXPERIENCE_GAINED_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(POKEMON_EXPERIENCE_GAINED_ATTRIBUTE).register()
     val TYPED_CATCH_CHANCE_BOOST_ATTRIBUTE: TypedAttributesContainer = TypedAttributesContainer.of(CATCH_CHANCE_BOOST_ATTRIBUTE).register()
